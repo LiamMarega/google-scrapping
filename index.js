@@ -1,7 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
 const ExcelJS = require('exceljs');
-const XLSX = require('xlsx');
 
 const apiUrl = `https://api.app.outscraper.com/maps/search`;
 
@@ -21,8 +20,6 @@ axios
     },
   })
   .then((response) => {
-    var jsonData = JSON.stringify(response.data);
-
     // Leer los datos del archivo JSON
     fs.readFile('data.json', 'utf8', (err, jsonString) => {
       if (err) {
