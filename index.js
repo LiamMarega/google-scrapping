@@ -20,6 +20,15 @@ axios
     },
   })
   .then((response) => {
+    var jsonData = JSON.stringify(response.data);
+    // verificar si data.json existe si no existe crear el archivo
+    fs.writeFile('data.json', jsonData, function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Archivo creado exitosamente.');
+      }
+    });
     // Leer los datos del archivo JSON
     fs.readFile('data.json', 'utf8', (err, jsonString) => {
       if (err) {
